@@ -4,11 +4,11 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="JPAFSApp" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.gmail.luisfpinho99.bysidefs.domain.model.entry.Entry</class>
-        <class>com.gmail.luisfpinho99.bysidefs.domain.model.entry.Directory</class>
-        <class>com.gmail.luisfpinho99.bysidefs.domain.model.entry.File</class>
-        <class>com.gmail.luisfpinho99.bysidefs.domain.model.group.UserGroup</class>
-        <class>com.gmail.luisfpinho99.bysidefs.domain.model.user.User</class>
+        <class>com.gmail.luisfpinho99.fsapp.domain.model.entry.Entry</class>
+        <class>com.gmail.luisfpinho99.fsapp.domain.model.entry.Directory</class>
+        <class>com.gmail.luisfpinho99.fsapp.domain.model.entry.File</class>
+        <class>com.gmail.luisfpinho99.fsapp.domain.model.group.UserGroup</class>
+        <class>com.gmail.luisfpinho99.fsapp.domain.model.user.User</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
