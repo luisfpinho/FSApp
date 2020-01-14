@@ -26,30 +26,28 @@ public class MoveEntryService {
             throw new IllegalArgumentException(String.format("No write permissions in destination directory to move entry '%s'.", originPath));
         }
 
+        EntryName originalName = origin.getName();
         origin.updateName(EntryName.from(Entry.nameFromPath(destinationPath)));
 
         Directory originDirectory = origin.getParent();
         origin = saveEntry(origin);
 
-        if (!originDirectory.equals(destinationDirectory)) {
-            originDirectory.removeEntry(origin);
-            save(origin, originDirectory, destinationDirectory, keepOwner, keepPermissions);
-        } else {
-            saveEntry(originDirectory);
-        }
+        originDirectory.removeEntry(origin);
+        save(originalName, origin, originDirectory, destinationDirectory, keepOwner, keepPermissions);
     }
 
-    private void save(Entry origin, Directory originDirectory, Directory destinationDirectory, boolean keepOwner, boolean keepPermissions) {
+    private void save(EntryName originalName, Entry origin, Directory originDirectory, Directory destinationDirectory, boolean keepOwner, boolean keepPermissions) {
         try {
             destinationDirectory.addEntry(origin, keepPermissions, keepOwner);
-            directoryRepository.save(destinationDirectory);
-            directoryRepository.save(originDirectory);
+//            directoryRepository.save(destinationDirectory);
+//            directoryRepository.save(originDirectory);
         } catch (Exception e) {
-            if (origin instanceof Directory) {
-                directoryRepository.remove((Directory) origin);
-            } else {
-                fileRepository.remove((File) origin);
-            }
+            origin.updateName(originalName);
+//            if (origin instanceof Directory) {
+//                directoryRepository.remove((Directory) origin);
+//            } else {
+//                fileRepository.remove((File) origin);
+//            }
             throw e;
         }
     }

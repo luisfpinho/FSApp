@@ -7,7 +7,7 @@ import com.gmail.luisfpinho99.fsapp.repository.memory.RepositoryFactoryMem;
 public class AskPersistenceUI extends UI {
 
     public boolean askPersistence() {
-        System.out.print("Use persistence? (y/n/q)\n(mv command is buggy with persistence)\n> ");
+        System.out.print("Use persistence? (y/n/q)\n(mv command does not work with persistence enabled)\n> ");
         String answer;
         do {
             answer = scanner.nextLine();
