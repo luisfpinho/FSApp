@@ -56,6 +56,10 @@ public class Username implements Serializable {
         return Objects.hash(usernameValue.toLowerCase());
     }
 
+    public String value() {
+        return usernameValue;
+    }
+
     public static Username from(String username) {
         return new Username(username);
     }

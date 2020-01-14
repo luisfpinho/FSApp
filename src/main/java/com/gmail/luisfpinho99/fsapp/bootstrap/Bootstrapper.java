@@ -31,17 +31,17 @@ public class Bootstrapper {
     }
 
     private User createUser(Username username, String password, UserGroup group) {
-        User rootUser = userRepository.findById(username);
-        if (rootUser == null) {
-            rootUser = new UserBuilder()
+        User user = userRepository.findById(username);
+        if (user == null) {
+            user = new UserBuilder()
                     .withUsername(username)
                     .withPassword(password)
                     .withGroup(group)
                     .build();
-            userRepository.save(rootUser);
+            userRepository.save(user);
         }
 
-        return rootUser;
+        return user;
     }
 
     private UserGroup createGroup(GroupName name) {

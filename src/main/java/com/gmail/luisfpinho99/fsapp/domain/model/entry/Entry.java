@@ -87,6 +87,11 @@ public abstract class Entry implements Serializable {
         return id;
     }
 
+    // Only for mem repositories
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public EntryName getName() {
         return name;
     }

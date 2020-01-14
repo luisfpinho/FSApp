@@ -44,4 +44,8 @@ public class UserGroup implements Serializable {
     public int hashCode() {
         return Objects.hash(groupName);
     }
+
+    public GroupName name() {
+        return groupName;
+    }
 }
